@@ -13,7 +13,7 @@ void Split(char* string,char* delimiters, char*** tokens, int* tokensCount);
     pt = strtok (string, delimiters);
     (*tokens)[(*tokensCount)++] = pt;
 
-    while (temp_str != NULL)
+    while (pt)
     {
         pt = strtok (NULL, delimiters);
         (*tokens)[(*tokensCount)++] = pt;

@@ -11,9 +11,7 @@ void Split(char* string,char* delimiters, char*** tokens, int* tokensCount)
 {
     *tokensCount = 0;
     char* pt = NULL;
-
     pt = strtok (string, delimiters);
-    
     while (pt)
     {
         (*tokens)[(*tokensCount)] = pt;

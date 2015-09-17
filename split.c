@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+const int MaxStringSize = 300;
+const int MaxDelimetersCount = 150;
+
 char *delimiters = ",. ?!():-/;#$%& \t\n@^*";
 
 void Split(char* string,char* delimiters, char*** tokens, int* tokensCount)
@@ -29,9 +32,9 @@ int main ()
      * const int MaxDelimetersCount = 150;
      * В коде не должно быть никаких "магических" чисел.
      */
-    char string[300] = {};
+    char string[MaxStringSize] = {};
     gets(string);
-    char** tokens    = (char**) malloc ( sizeof (char*) * 150);
+    char** tokens    = (char**) malloc ( sizeof (char*) * MaxDelimetersCount);
     int tokensCount= 0;
     int i;
     Split (string, delimiters, &tokens, &tokensCount);

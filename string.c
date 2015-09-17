@@ -16,9 +16,9 @@ void GenerateString(int n, char *string)
     * for(i = 1; i <= n; i++)
     * Обратите внимание на расстановку пробелов и делайте аналогично.
     */
-   for(i=1;i<=n;i++)
+   for(i=1; i<=n; i++)
    {
-      int k = (1<<i);
+      int k = (1 << i);
       string[k-1] = 'a' + i;
       memcpy(string+k, string, k-1);
    }
@@ -30,9 +30,9 @@ int main()
    * Нужно добавить пробел после запятой:
    * int n, c;
    */
-   int n,c;
+   int n, c;
    scanf("%d", &n);
-   c= (1<<n) + 1;
+   c= (1 << n) + 1;
    char *string;
    string = (char*)malloc(c); 
    if(n == 0)
@@ -44,7 +44,6 @@ int main()
       GenerateString(n, string);
       printf("%s\n",string);
    }
-   free(string);
    /*
     * FIXIT: программа падает с ошибкой
     * *** Error in `./a.out': free(): invalid next size (fast): 0x000000000249a010 ***

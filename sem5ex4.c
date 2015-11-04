@@ -10,7 +10,7 @@ N
 #include <malloc.h>
 #include <time.h>
 
-#define Elements 100000
+#define Elements 1000000
 #define N  4
 
 long double *array;

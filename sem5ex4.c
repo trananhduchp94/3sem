@@ -11,7 +11,7 @@ N
 #include <time.h>
 
 #define Elements 1000000
-#define N 1
+#define N 5
 
 long double *array;
 
@@ -19,11 +19,6 @@ long double sum[N];
 long double disp[N];
 long double average, dispersion;
 
-/*
- * FIXIT:
- * Дык, ваша программа "падает" с ошибкой segmentation fault.
- * Вероятно, это связано с проблемой, о которой написал ниже.
- */
 
 struct Task
 {
@@ -65,14 +60,12 @@ void* dispersion1(void* task)
 int main()
 {
     int i;
-    /*
-     * FIXIT:
-     * Вы на стеке пытаетесь выделить огромный кусок памяти. 
-     * Такие большие куски можно выделить только в куче с помощью malloc`а.
-     */
-    struct Task tasks[Elements];
-    struct Thread threads[Elements];
     
+    struct Task *tasks;
+    struct Thread *threads;
+    tasks = (struct Task *)malloc(Elements * sizeof(struct Task));
+    threads = (struct Thread *)malloc(Elements * sizeof(struct Thread));
+
     for(i = 0; i < N; i++)
     {
         tasks[i].index = i;

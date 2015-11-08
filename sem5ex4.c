@@ -19,7 +19,6 @@ long double sum[N];
 long double disp[N];
 long double average, dispersion;
 
-
 struct Task
 {
   int b, a, index;
@@ -56,13 +55,16 @@ void* dispersion1(void* task)
     return NULL;
 }
 
-
 int main()
 {
     int i;
     
     struct Task *tasks;
     struct Thread *threads;
+    /*
+     * У вас же число задач должно совпадать с числом нитей.
+     * А вы выделяете память не под N элементов, а под Elements.
+     */
     tasks = (struct Task *)malloc(Elements * sizeof(struct Task));
     threads = (struct Thread *)malloc(Elements * sizeof(struct Thread));
 
@@ -81,12 +83,7 @@ int main()
     array = (long double *)malloc(Elements * sizeof(long double));
     
     for (i = 0; i < Elements; i++)
-    array[i] = 2 + rand() % 2;  
-    
-   
-    
-    
-    
+    array[i] = 1 + rand() % 2;  
     
     for(i = 0; i < N; i++)
     {
@@ -101,7 +98,6 @@ int main()
         pthread_join(threads[i].id , (void **) NULL);
     }
       
-   
     for (i = 0; i < N; i++)
     {
        average = average + sum[i];
@@ -122,16 +118,16 @@ int main()
         pthread_join(threads[i].id , (void **) NULL);
     }
    
-    
-    for (i = 0; i < N - 1; i++)
+    /*
+     * У вас цикл был почему-то до N - 1.
+     * Из-за это дисперсия вычислялась неверно.
+     */
+    for (i = 0; i < N; i++)
     {
         dispersion = dispersion + disp[i];
     }
     
-    
     dispersion = dispersion / Elements;
-    
-   
     
     printf("Average = %Lf\n" , average);
     printf("Dispersion = %Lf\n" , dispersion);

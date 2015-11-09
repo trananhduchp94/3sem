@@ -66,7 +66,7 @@ int main()
      * А вы выделяете память не под N элементов, а под Elements.
      */
     tasks = (struct Task *)malloc(Elements * sizeof(struct Task));
-    threads = (struct Thread *)malloc(Elements * sizeof(struct Thread));
+    threads = (struct Thread *)malloc(N * sizeof(struct Thread));
 
     for(i = 0; i < N; i++)
     {

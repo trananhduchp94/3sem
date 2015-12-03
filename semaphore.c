@@ -1,3 +1,5 @@
+/*два потока в цикле инкрементируют одну и ту же 
+ * глобальную переменную.*/
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
